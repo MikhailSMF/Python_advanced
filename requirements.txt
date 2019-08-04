@@ -2,3 +2,5 @@ jupyter
 chardet
 requests
 pyyaml
+csv
+json
