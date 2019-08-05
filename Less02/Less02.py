@@ -57,11 +57,11 @@ def write_order_to_json(item, quantity, price, buyer, date):
     with open(path + 'orders.json', 'a') as wfile:
         json.dump(all,wfile, indent=4)
 
-item = {'item': 'apple'}#input(f'Введите значение item\n')}
-quantity = {'quantity': '10'}#input(f'Введите значение quantity\n')}
-price = {'price': '20$'}#input(f'Введите значение price\n')}
-buyer = {'buyer': 'Google'}#input(f'Введите значение buyer\n')}
-date = {'date': '04.08.2019'}#input(f'Введите значение date\n')}
+item = {'item': input(f'Введите значение item\n')}
+quantity = {'quantity': input(f'Введите значение quantity\n')}
+price = {'price': input(f'Введите значение price\n')}
+buyer = {'buyer': input(f'Введите значение buyer\n')}
+date = {'date': input(f'Введите значение date\n')}
 write_order_to_json(item, quantity, price, buyer, date)
 
 
