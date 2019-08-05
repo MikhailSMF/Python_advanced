@@ -1,4 +1,4 @@
-##Задание №1
+#Задание №1
 import os
 import re
 import csv
@@ -42,3 +42,48 @@ def write_to_csv(res_file_name):
         writer.writerows(main_data)
 
 write_to_csv(os.path.join(os.getcwd()+'\\'+'Less02\\')+input('Введите название файла для записи результатов: \n'))
+
+#Задание №2
+import json
+import os
+
+path = os.path.join(os.getcwd() + '\\' + 'Less02\\')
+
+
+def write_order_to_json(item, quantity, price, buyer, date):
+
+    all=[item, quantity, price, buyer, date]
+    print(all)
+    with open(path + 'orders.json', 'a') as wfile:
+        json.dump(all,wfile, indent=4)
+
+item = {'item': 'apple'}#input(f'Введите значение item\n')}
+quantity = {'quantity': '10'}#input(f'Введите значение quantity\n')}
+price = {'price': '20$'}#input(f'Введите значение price\n')}
+buyer = {'buyer': 'Google'}#input(f'Введите значение buyer\n')}
+date = {'date': '04.08.2019'}#input(f'Введите значение date\n')}
+write_order_to_json(item, quantity, price, buyer, date)
+
+
+#Задание №3
+import yaml
+import os
+
+path = os.path.join(os.getcwd() + '\\' + 'Less02\\')
+
+def write_to_yaml(to_yaml):
+    with open(path + 'file.yaml', 'w') as wfile:
+        yaml.safe_dump(to_yaml, wfile, default_flow_style=True, allow_unicode=True)
+
+def read_from_yaml():
+    with open(path+'file.yaml', 'r') as rfile:
+        return yaml.safe_load(rfile)
+
+
+lst_1 = [1,2,3]
+num_2 = 12345
+dict_3 = {"val": "€"}
+to_yaml = {'1': lst_1,'2': num_2,'3': dict_3}
+write_to_yaml(to_yaml)
+if read_from_yaml() == to_yaml:
+    print('Оно совпадает!')
