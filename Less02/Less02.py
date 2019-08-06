@@ -50,19 +50,24 @@ import os
 path = os.path.join(os.getcwd() + '\\' + 'Less02\\')
 
 
-def write_order_to_json(item, quantity, price, buyer, date):
+def write_order_to_json(all):
 
-    all=[item, quantity, price, buyer, date]
-    print(all)
-    with open(path + 'orders.json', 'a') as wfile:
-        json.dump(all,wfile, indent=4)
 
-item = {'item': input(f'Введите значение item\n')}
-quantity = {'quantity': input(f'Введите значение quantity\n')}
-price = {'price': input(f'Введите значение price\n')}
-buyer = {'buyer': input(f'Введите значение buyer\n')}
-date = {'date': input(f'Введите значение date\n')}
-write_order_to_json(item, quantity, price, buyer, date)
+    with open(path + 'orders.json', 'r') as rfile:
+        json_read = json.load(rfile)
+
+    with open(path + 'orders.json', 'w') as wfile:
+        json_read['orders'].append(all)
+        json_write = json_read
+        json.dump(json_write,wfile, indent=4)
+
+all = {'item': input(f'Введите значение item\n'),\
+       'quantity': input(f'Введите значение quantity\n'),\
+       'price': input(f'Введите значение price\n'),\
+       'buyer': input(f'Введите значение buyer\n'),\
+        'date': input(f'Введите значение date\n')}
+#all = {'item': 'apple', 'quantity': '10', 'price': '20$', 'buyer': 'Google', 'date': '04.08.2019'}
+write_order_to_json(all)
 
 
 #Задание №3
